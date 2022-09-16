@@ -35,10 +35,22 @@ export const useTodo = () => {
     };
     dispatch(action);
   };
+
+  const doneTasksSize = () => {
+    return todos.filter((todo) => todo.done === true).length;
+  };
+
+  const AllIsDone = () => {
+    if (todos.length === 0) return false;
+    return doneTasksSize() === todos.length;
+  };
+
   return {
     todos,
     handleDelete,
     handleTodo,
     handleToggleTodo,
+    doneTasksSize,
+    AllIsDone,
   };
 };

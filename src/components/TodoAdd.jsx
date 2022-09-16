@@ -21,7 +21,10 @@ export const TodoAdd = (props) => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="d-flex gap-1 mb-2 justify-content-between"
+      >
         <input
           className="form-control"
           type="text"
@@ -30,7 +33,9 @@ export const TodoAdd = (props) => {
           name={"description"}
           onChange={onInputChange}
         />
-        <button className="mt-2 mb-3 btn btn-primary outline">Add</button>
+        <button className="mt-2 mb-3 btn btn-primary">
+          <i className="bi bi-plus-circle-fill"></i>
+        </button>
       </form>
     </>
   );

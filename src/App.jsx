@@ -5,10 +5,23 @@ import { TodoList } from "./components/TodoList";
 import { useTodo } from "./hooks/useTodo";
 
 function App() {
-  const { todos, handleDelete, handleTodo, handleToggleTodo } = useTodo();
+  const {
+    todos,
+    handleDelete,
+    handleTodo,
+    handleToggleTodo,
+    doneTasksSize,
+    AllIsDone,
+  } = useTodo();
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
+    if (AllIsDone()) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
     return () => {};
   }, [todos]);
 
@@ -21,9 +34,39 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TodoApp: {todos.length}</h1>
+      <div
+        className="position-sticky top-0 bg-white"
+        style={{ zIndex: "10000" }}
+      >
+        <h1>
+          TodoApp{" "}
+          {AllIsDone() ? (
+            <>
+              <span className="badge rounded-pill text-bg-success mb-2 text-center fs-5">
+                <i className="bi bi-check-circle-fill"></i>
+                {"  "}
+                Work done!
+                <i className="bi bi-fire"></i>
+                {"  "}
+              </span>{" "}
+            </>
+          ) : (
+            <>
+              <span className="badge rounded-pill text-bg-warning">
+                <i className="bi bi-check-circle-fill"></i>
+                {"  "}
+                {doneTasksSize()}
+              </span>{" "}
+              <span className="badge rounded-pill text-bg-info">
+                <i className="bi bi-asterisk"> </i>
+                {"  "}
+                {todos.length}
+              </span>{" "}
+            </>
+          )}
+        </h1>
+      </div>
       <hr />
-
       <div className="row">
         <div className="col-md-5 col-sm-7">
           <TodoAdd onNewTodo={handleTodo} />
