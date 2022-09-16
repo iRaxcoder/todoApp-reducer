@@ -5,7 +5,7 @@ const init = () => {
   if (localStorage.getItem("todos")) {
     return JSON.parse(localStorage.getItem("todos"));
   }
-  return {};
+  return [];
 };
 
 export const useTodo = () => {
