@@ -50,10 +50,10 @@ function App() {
       </div>
       <hr />
       <div className="row">
-        <div className="col-md-5 col-sm-7">
+        <div className="col-md-12 col-sm-7">
           <TodoAdd onNewTodo={handleTodo} />
         </div>
-        <div className="col-md-7 col-sm-7">
+        <div className="col-md-12 col-sm-7">
           <TodoList
             onToggleTodo={handleToggleTodo}
             list={todos}
