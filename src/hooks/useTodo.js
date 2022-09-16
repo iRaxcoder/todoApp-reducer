@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { todoReducer } from "../reducers/todoReducer";
 
 const init = () => {
-  return JSON.parse(localStorage.getItem("todos") || []);
+  return JSON.parse(localStorage.getItem("todos") || "");
 };
 
 export const useTodo = () => {
