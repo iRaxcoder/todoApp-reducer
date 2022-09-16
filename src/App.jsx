@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     if (!localStorage.getItem("tip")) {
       alert("double click - tap on description to mark as done");
-      localStorage.setItem("tip");
+      localStorage.setItem("tip", "showed");
     }
   }, []);
 
