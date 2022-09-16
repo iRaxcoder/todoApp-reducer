@@ -17,7 +17,10 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
       >
         {todo.description}
       </span>
-      <button className="btn btn-danger " onClick={() => onDeleteTodo(todo.id)}>
+      <button
+        className="btn btn-danger "
+        onDoubleClick={() => onDeleteTodo(todo.id)}
+      >
         <i className="bi bi-trash-fill"></i>
       </button>
     </li>
