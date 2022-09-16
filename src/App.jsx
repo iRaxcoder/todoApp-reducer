@@ -14,24 +14,6 @@ function App() {
     AllIsDone,
   } = useTodo();
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-    if (AllIsDone()) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-    return () => {};
-  }, [todos]);
-
-  useEffect(() => {
-    if (!localStorage.getItem("tip")) {
-      alert("double click - tap on description to mark as done");
-      localStorage.setItem("tip", "showed");
-    }
-  }, []);
-
   return (
     <div className="App">
       <div

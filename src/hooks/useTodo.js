@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { todoReducer } from "../reducers/todoReducer";
 
 const init = () => {
@@ -11,6 +11,24 @@ const init = () => {
 export const useTodo = () => {
   const initialState = [];
   const [todos, dispatch] = useReducer(todoReducer, initialState, init);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    if (AllIsDone()) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    return () => {};
+  }, [todos]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("tip")) {
+      alert("double click - tap on description to mark as done");
+      localStorage.setItem("tip", "showed");
+    }
+  }, []);
 
   const handleTodo = (todo) => {
     const action = {
