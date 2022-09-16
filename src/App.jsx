@@ -12,6 +12,13 @@ function App() {
     return () => {};
   }, [todos]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("tip")) {
+      alert("double click - tap on description to mark as done");
+      localStorage.setItem("tip");
+    }
+  }, []);
+
   return (
     <div className="App">
       <h1>TodoApp: {todos.length}</h1>
