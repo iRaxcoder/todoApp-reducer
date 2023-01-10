@@ -46,6 +46,13 @@ export const useTodo = () => {
     dispatch(action);
   };
 
+  const handleDeleteAll = () => {
+    const action = {
+      type: "[TODO] Delete All",
+    };
+    dispatch(action);
+  };
+
   const handleToggleTodo = (id) => {
     const action = {
       type: "[TODO] Toggle",
@@ -66,6 +73,7 @@ export const useTodo = () => {
   return {
     todos,
     handleDelete,
+    handleDeleteAll,
     handleTodo,
     handleToggleTodo,
     doneTasksSize,

@@ -9,11 +9,13 @@ export const TodoAdd = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (description.trim().length <= 1) return;
-    const todo = {
-      id: new Date().getTime(),
-      description,
-      done: false,
-    };
+    const todo = [
+      {
+        id: new Date().getTime(),
+        description,
+        done: false,
+      },
+    ];
 
     props?.onNewTodo(todo);
     onResetForm();

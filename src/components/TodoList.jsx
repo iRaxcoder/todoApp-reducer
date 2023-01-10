@@ -8,11 +8,11 @@ export const TodoList = (props) => {
       <hr />
       {props.list.length <= 0 && <h5>No todos added yet</h5>}
       <ul className="list-group">
-        {props.list?.map((todo) => (
+        {props.list?.map((todo, index) => (
           <TodoItem
             onToggleTodo={props.onToggleTodo}
             onDeleteTodo={props.onDeleteTodo}
-            key={todo.id}
+            key={index}
             todo={todo}
           />
         ))}

@@ -1,6 +1,8 @@
 import { useReducer, useEffect } from "react";
 import "./App.css";
 import { TodoAdd } from "./components/TodoAdd";
+import { TodoDelete } from "./components/TodoDelete";
+import { TodoImport } from "./components/TodoImport";
 import { TodoList } from "./components/TodoList";
 import { useTodo } from "./hooks/useTodo";
 
@@ -12,6 +14,7 @@ function App() {
     handleToggleTodo,
     doneTasksSize,
     AllIsDone,
+    handleDeleteAll,
   } = useTodo();
 
   return (
@@ -47,6 +50,10 @@ function App() {
             </>
           )}
         </h1>
+      </div>
+      <div className="d-flex align-items-center">
+        <TodoImport onNewTodo={handleTodo} />
+        <TodoDelete onDeleteAll={handleDeleteAll} />
       </div>
       <hr />
       <div className="row">
